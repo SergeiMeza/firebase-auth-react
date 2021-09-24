@@ -1,26 +1,35 @@
 {
-  "name": "firebase-react",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@sergeimeza/firebase-react",
+  "version": "1.0.0",
+  "private": false,
+  "scripts": {
+    "start": "react-scripts start",
+    "build:clean": "rimraf lib",
+    "compile": "yarn build:clean && tsc --project tsconfig.compile.json",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
+    "@sergeimeza/foundation-react": "1.0.1"
+  },
+  "peerDependencies": {
+    "firebase": "^8.10.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/firebase": "^3.2.1",
+    "@types/lodash.debounce": "^4.0.6",
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "firebase": "^8.10.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
+    "rimraf": "^3.0.2",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +48,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "semi": false
+  },
+  "description": "Personal firebase library",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "repository": "https://github.com/SergeiMeza/firebase-react.git",
+  "author": "SergeiMeza <sergeimeza@gmail.com>",
+  "license": "MIT"
 }

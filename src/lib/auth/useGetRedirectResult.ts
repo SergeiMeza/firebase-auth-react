@@ -15,7 +15,7 @@ export default function useGetRedirectResult(
   const [error, setError] = useState<FirebaseError>()
   const [loading, setLoading] = useState(false)
 
-  const _signInWithRedirect = useCallback(async () => {
+  const _getRedirectResult = useCallback(async () => {
     setLoading(true)
     try {
       const credential = await getRedirectResult(auth)
@@ -27,5 +27,5 @@ export default function useGetRedirectResult(
     }
   }, [auth])
 
-  return [_signInWithRedirect, credential, loading, error] as const
+  return [_getRedirectResult, credential, loading, error] as const
 }

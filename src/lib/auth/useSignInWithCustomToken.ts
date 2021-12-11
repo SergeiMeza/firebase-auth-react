@@ -6,7 +6,7 @@ import { Auth, UserCredential, signInWithCustomToken } from 'firebase/auth'
 export default function useSignInWithCustomToken(
   auth: Auth,
 ): readonly [
-  (token: string) => Promise<void>,
+  (customToken: string) => Promise<void>,
   UserCredential | undefined,
   boolean,
   FirebaseError | undefined,
@@ -16,10 +16,10 @@ export default function useSignInWithCustomToken(
   const [loading, setLoading] = useState(false)
 
   const _signInWithCustomToken = useCallback(
-    async (token: string) => {
+    async (customToken: string) => {
       setLoading(true)
       try {
-        const credential = await signInWithCustomToken(auth, token)
+        const credential = await signInWithCustomToken(auth, customToken)
         setCredential(credential)
         setLoading(false)
       } catch (error) {

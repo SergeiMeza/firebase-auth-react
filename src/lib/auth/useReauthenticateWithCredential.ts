@@ -3,12 +3,12 @@ import { useCallback, useState } from 'react'
 import { FirebaseError } from 'firebase/app'
 import {
   AuthCredential,
-  linkWithCredential,
+  reauthenticateWithCredential,
   User,
   UserCredential,
 } from 'firebase/auth'
 
-export default function useLinkWithCredential(): readonly [
+export default function useReauthenticateWithCredential(): readonly [
   (user: User, authCredential: AuthCredential) => Promise<void>,
   UserCredential | undefined,
   boolean,
@@ -18,11 +18,14 @@ export default function useLinkWithCredential(): readonly [
   const [error, setError] = useState<FirebaseError>()
   const [loading, setLoading] = useState(false)
 
-  const _linkWithCredential = useCallback(
+  const _reauthenticateWithCredential = useCallback(
     async (user: User, authCredential: AuthCredential) => {
       setLoading(true)
       try {
-        const credential = await linkWithCredential(user, authCredential)
+        const credential = await reauthenticateWithCredential(
+          user,
+          authCredential,
+        )
         setCredential(credential)
         setLoading(false)
       } catch (error) {
@@ -33,5 +36,5 @@ export default function useLinkWithCredential(): readonly [
     [],
   )
 
-  return [_linkWithCredential, credential, loading, error] as const
+  return [_reauthenticateWithCredential, credential, loading, error] as const
 }

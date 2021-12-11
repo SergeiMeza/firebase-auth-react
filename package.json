@@ -1,6 +1,6 @@
 {
   "name": "@sergeimeza/firebase-react",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "private": false,
   "description": "Personal firebase library",
   "main": "lib/cjs/index.js",

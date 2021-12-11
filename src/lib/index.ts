@@ -23,6 +23,7 @@ import useSignInWithCredential from './auth/useSignInWithCredential'
 import useSignInWithCustomToken from './auth/useSignInWithCustomToken'
 import useSignInWithEmailAndPassword from './auth/useSignInWithEmailAndPassword'
 import useSignInWithEmailLink from './auth/useSignInWithEmailLink'
+import useSignInWithPhoneNumber from './auth/useSignInWithPhoneNumber'
 import useSignInWithPopup from './auth/useSignInWithPopup'
 import useSignInWithRedirect from './auth/useSignInWithRedirect'
 import useSignOut from './auth/useSignOut'
@@ -54,6 +55,7 @@ export {
   useSignInWithCustomToken,
   useSignInWithEmailAndPassword,
   useSignInWithEmailLink,
+  useSignInWithPhoneNumber,
   useSignInWithPopup,
   useSignInWithRedirect,
   useSignOut,

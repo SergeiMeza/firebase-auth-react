@@ -1,4 +1,6 @@
+import useApplyActionCode from './auth/useApplyActionCode'
 import useAuth from './auth/useAuth'
+import useCheckActionCode from './auth/useCheckActionCode'
 import useConfirmPasswordReset from './auth/useConfirmPasswordReset'
 import useCreateUserWithEmailAndPassword from './auth/useCreateUserWithEmailAndPassword'
 import useDeleteUser from './auth/useDeleteUser'
@@ -27,10 +29,18 @@ import useSignInWithPhoneNumber from './auth/useSignInWithPhoneNumber'
 import useSignInWithPopup from './auth/useSignInWithPopup'
 import useSignInWithRedirect from './auth/useSignInWithRedirect'
 import useSignOut from './auth/useSignOut'
+import useUnlink from './auth/useUnlink'
 import useUpdateEmail from './auth/useUpdateEmail'
+import useUpdatePassword from './auth/useUpdatePassword'
+import useUpdatePhoneNumber from './auth/useUpdatePhoneNumber'
+import useUpdateProfile from './auth/useUpdateProfile'
+import useVerifyBeforeUpdateEmail from './auth/useVerifyBeforeUpdateEmail'
+import useVerifyPasswordResetCode from './auth/useVerifyPasswordResetCode'
 
 export {
+  useApplyActionCode,
   useAuth,
+  useCheckActionCode,
   useConfirmPasswordReset,
   useCreateUserWithEmailAndPassword,
   useDeleteUser,
@@ -59,5 +69,11 @@ export {
   useSignInWithPopup,
   useSignInWithRedirect,
   useSignOut,
+  useUnlink,
   useUpdateEmail,
+  useUpdatePassword,
+  useUpdatePhoneNumber,
+  useUpdateProfile,
+  useVerifyBeforeUpdateEmail,
+  useVerifyPasswordResetCode,
 }

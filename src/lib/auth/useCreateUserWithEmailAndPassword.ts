@@ -17,7 +17,12 @@ export interface Options {
 export default function useCreateUserWithEmailAndPassword(
   auth: Auth,
   options?: Options,
-) {
+): readonly [
+  (email: string, password: string) => Promise<void>,
+  UserCredential | undefined,
+  boolean,
+  FirebaseError | undefined,
+] {
   const optionsRef = useRef<Options>()
   optionsRef.current = options ?? {}
 

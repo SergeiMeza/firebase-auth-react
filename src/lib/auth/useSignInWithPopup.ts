@@ -1,12 +1,17 @@
 import { useCallback, useState } from 'react'
 
 import { FirebaseError } from 'firebase/app'
-import { Auth, UserCredential, signInWithEmailAndPassword } from 'firebase/auth'
+import {
+  Auth,
+  UserCredential,
+  signInWithPopup,
+  AuthProvider,
+} from 'firebase/auth'
 
-export default function useSignInWithEmailAndPassword(
+export default function useSignInWithPopup(
   auth: Auth,
 ): readonly [
-  (email: string, password: string) => Promise<void>,
+  (provider: AuthProvider) => Promise<void>,
   UserCredential | undefined,
   boolean,
   FirebaseError | undefined,
@@ -15,15 +20,11 @@ export default function useSignInWithEmailAndPassword(
   const [error, setError] = useState<FirebaseError>()
   const [loading, setLoading] = useState(false)
 
-  const _signInWithEmailAndPassword = useCallback(
-    async (email: string, password: string) => {
+  const _signInWithPopup = useCallback(
+    async (provider: AuthProvider) => {
       setLoading(true)
       try {
-        const credential = await signInWithEmailAndPassword(
-          auth,
-          email,
-          password,
-        )
+        const credential = await signInWithPopup(auth, provider)
         setCredential(credential)
         setLoading(false)
       } catch (error) {
@@ -34,5 +35,5 @@ export default function useSignInWithEmailAndPassword(
     [auth],
   )
 
-  return [_signInWithEmailAndPassword, credential, loading, error] as const
+  return [_signInWithPopup, credential, loading, error] as const
 }

@@ -3,7 +3,14 @@ import { useCallback, useState } from 'react'
 import { FirebaseError } from 'firebase/app'
 import { Auth, UserCredential, signInAnonymously } from 'firebase/auth'
 
-export default function useSignInAnonymously(auth: Auth) {
+export default function useSignInAnonymously(
+  auth: Auth,
+): readonly [
+  () => Promise<void>,
+  UserCredential | undefined,
+  boolean,
+  FirebaseError | undefined,
+] {
   const [credential, setCredential] = useState<UserCredential>()
   const [error, setError] = useState<FirebaseError>()
   const [loading, setLoading] = useState(false)

@@ -23,13 +23,12 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "dependencies": {
-    "@sergeimeza/foundation-react": "1.0.1"
-  },
+  "dependencies": {},
   "peerDependencies": {
-    "firebase": "^9.6.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "firebase": "^9.6.1",
+    "@sergeimeza/foundation-react": "1.0.1"
   },
   "devDependencies": {
     "@types/firebase": "^3.2.1",
@@ -37,6 +36,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@sergeimeza/foundation-react": "1.0.1",
     "firebase": "^9.6.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

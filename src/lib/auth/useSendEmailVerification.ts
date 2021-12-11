@@ -4,7 +4,10 @@ import { FirebaseError } from 'firebase/app'
 import { ActionCodeSettings, sendEmailVerification, User } from 'firebase/auth'
 
 export default function useSendEmailVerification(): readonly [
-  (user: User, actionCodeSettings: ActionCodeSettings) => Promise<void>,
+  (
+    user: User,
+    actionCodeSettings?: ActionCodeSettings | null | undefined,
+  ) => Promise<void>,
   boolean,
   FirebaseError | undefined,
 ] {
@@ -12,7 +15,10 @@ export default function useSendEmailVerification(): readonly [
   const [loading, setLoading] = useState(false)
 
   const _sendEmailVerification = useCallback(
-    async (user: User, actionCodeSettings: ActionCodeSettings) => {
+    async (
+      user: User,
+      actionCodeSettings?: ActionCodeSettings | null | undefined,
+    ) => {
       setLoading(true)
       try {
         await sendEmailVerification(user, actionCodeSettings)

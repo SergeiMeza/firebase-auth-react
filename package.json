@@ -1,6 +1,6 @@
 {
   "name": "@sergeimeza/firebase-react",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "private": false,
   "description": "Personal firebase library",
   "main": "lib/cjs/index.js",
@@ -25,18 +25,18 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "@sergeimeza/foundation-react": "1.0.1",
     "firebase": "^9.6.1",
-    "@sergeimeza/foundation-react": "1.0.1"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@sergeimeza/foundation-react": "1.0.1",
     "@types/firebase": "^3.2.1",
     "@types/lodash.debounce": "^4.0.6",
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "@sergeimeza/foundation-react": "1.0.1",
     "firebase": "^9.6.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

@@ -31,7 +31,7 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@sergeimeza/foundation-react": "1.0.1",
+    "@sergeimeza/foundation-react": "^1.2.0",
     "@types/firebase": "^3.2.1",
     "@types/lodash.debounce": "^4.0.6",
     "@types/node": "^12.0.0",

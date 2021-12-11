@@ -2183,10 +2183,10 @@
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
 
-"@sergeimeza/foundation-react@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@sergeimeza/foundation-react/-/foundation-react-1.0.1.tgz#9f977ce8da9798829825a0a5ffc4cb9b98af7c22"
-  integrity sha512-fZb3r1RFr9rh/IBDYLM38dpr1l68l3IYy0bSoroUSPqjsrV3cCn5NEwWOXPOMAPvk/+6NpBXSuKTUAzjKdSY4w==
+"@sergeimeza/foundation-react@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@sergeimeza/foundation-react/-/foundation-react-1.2.0.tgz#773de4907506fc8bc17782bd4a5d108c393a36be"
+  integrity sha512-yccbvPwjwu0GId4AjIbq7QjWE3M4W4EUrQzqkBKSy7x5PRMh1Yzjkhg9GAGJt3Gpi7PmSwPayY9yld1/jp8wjA==
   dependencies:
     dayjs "^1.10.7"
     lodash.debounce "^4.0.8"

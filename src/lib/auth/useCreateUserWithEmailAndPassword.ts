@@ -1,44 +1,54 @@
-import firebase from 'firebase/app'
 import { useCallback, useRef, useState } from 'react'
+
+import { FirebaseError } from 'firebase/app'
+import {
+  ActionCodeSettings,
+  Auth,
+  UserCredential,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from 'firebase/auth'
 
 export interface Options {
   sendEmailVerification?: boolean
-  actionCodeSettings?: firebase.auth.ActionCodeSettings
+  actionCodeSettings?: ActionCodeSettings
 }
 
 export default function useCreateUserWithEmailAndPassword(
-  auth: firebase.auth.Auth,
+  auth: Auth,
   options?: Options,
 ) {
   const optionsRef = useRef<Options>()
   optionsRef.current = options ?? {}
 
-  const [credential, setCredential] = useState<firebase.auth.UserCredential>()
-  const [error, setError] = useState<firebase.FirebaseError>()
+  const [credential, setCredential] = useState<UserCredential>()
+  const [error, setError] = useState<FirebaseError>()
   const [loading, setLoading] = useState(false)
 
-  const createUserWithEmailAndPassword = useCallback(
+  const _createUserWithEmailAndPassword = useCallback(
     async (email: string, password: string) => {
       setLoading(true)
       try {
-        const credential = await auth.createUserWithEmailAndPassword(
+        const credential = await createUserWithEmailAndPassword(
+          auth,
           email,
           password,
         )
         if (options && options.sendEmailVerification && credential.user) {
-          await credential.user.sendEmailVerification(
+          await sendEmailVerification(
+            credential.user,
             options?.actionCodeSettings,
           )
         }
         setCredential(credential)
         setLoading(false)
       } catch (error) {
-        setError(error as firebase.FirebaseError)
+        setError(error as FirebaseError)
         setLoading(false)
       }
     },
     [auth],
   )
 
-  return [createUserWithEmailAndPassword, credential, loading, error] as const
+  return [_createUserWithEmailAndPassword, credential, loading, error] as const
 }

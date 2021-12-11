@@ -1,25 +1,27 @@
-import firebase from 'firebase/app'
 import { useCallback, useState } from 'react'
 
-export default function useSignInWithCustomToken(auth: firebase.auth.Auth) {
-  const [credential, setCredential] = useState<firebase.auth.UserCredential>()
-  const [error, setError] = useState<firebase.FirebaseError>()
+import { FirebaseError } from 'firebase/app'
+import { Auth, UserCredential, signInWithCustomToken } from 'firebase/auth'
+
+export default function useSignInWithCustomToken(auth: Auth) {
+  const [credential, setCredential] = useState<UserCredential>()
+  const [error, setError] = useState<FirebaseError>()
   const [loading, setLoading] = useState(false)
 
-  const signInWithCustomToken = useCallback(
+  const _signInWithCustomToken = useCallback(
     async (token: string) => {
       setLoading(true)
       try {
-        const credential = await auth.signInWithCustomToken(token)
+        const credential = await signInWithCustomToken(auth, token)
         setCredential(credential)
         setLoading(false)
       } catch (error) {
-        setError(error as firebase.FirebaseError)
+        setError(error as FirebaseError)
         setLoading(false)
       }
     },
     [auth],
   )
 
-  return [signInWithCustomToken, credential, loading, error] as const
+  return [_signInWithCustomToken, credential, loading, error] as const
 }

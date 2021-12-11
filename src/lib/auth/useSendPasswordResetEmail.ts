@@ -1,23 +1,25 @@
-import firebase from 'firebase/app'
 import { useCallback, useState } from 'react'
 
-export default function useSendPasswordResetEmail(auth: firebase.auth.Auth) {
-  const [error, setError] = useState<firebase.FirebaseError>()
+import { FirebaseError } from 'firebase/app'
+import { Auth, sendPasswordResetEmail } from 'firebase/auth'
+
+export default function useSendPasswordResetEmail(auth: Auth) {
+  const [error, setError] = useState<FirebaseError>()
   const [loading, setLoading] = useState(false)
 
-  const sendPasswordResetEmail = useCallback(
+  const _sendPasswordResetEmail = useCallback(
     async (email: string) => {
       setLoading(true)
       try {
-        await auth.sendPasswordResetEmail(email)
+        await sendPasswordResetEmail(auth, email)
         setLoading(false)
       } catch (error) {
-        setError(error as firebase.FirebaseError)
+        setError(error as FirebaseError)
         setLoading(false)
       }
     },
     [auth],
   )
 
-  return [sendPasswordResetEmail, loading, error] as const
+  return [_sendPasswordResetEmail, loading, error] as const
 }

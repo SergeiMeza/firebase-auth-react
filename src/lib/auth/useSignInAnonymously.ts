@@ -1,22 +1,24 @@
-import firebase from 'firebase/app'
 import { useCallback, useState } from 'react'
 
-export default function useSignInAnonymously(auth: firebase.auth.Auth) {
-  const [credential, setCredential] = useState<firebase.auth.UserCredential>()
-  const [error, setError] = useState<firebase.FirebaseError>()
+import { FirebaseError } from 'firebase/app'
+import { Auth, UserCredential, signInAnonymously } from 'firebase/auth'
+
+export default function useSignInAnonymously(auth: Auth) {
+  const [credential, setCredential] = useState<UserCredential>()
+  const [error, setError] = useState<FirebaseError>()
   const [loading, setLoading] = useState(false)
 
-  const signInAnonymously = useCallback(async () => {
+  const _signInAnonymously = useCallback(async () => {
     setLoading(true)
     try {
-      const credential = await auth.signInAnonymously()
+      const credential = await signInAnonymously(auth)
       setCredential(credential)
       setLoading(false)
     } catch (error) {
-      setError(error as firebase.FirebaseError)
+      setError(error as FirebaseError)
       setLoading(false)
     }
   }, [auth])
 
-  return [signInAnonymously, credential, loading, error] as const
+  return [_signInAnonymously, credential, loading, error] as const
 }

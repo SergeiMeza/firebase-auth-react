@@ -1,9 +1,9 @@
 import { useEffect, useMemo } from 'react'
 
-import firebase from 'firebase/app'
+import { Auth } from 'firebase/auth'
 import { useAsync } from '@sergeimeza/foundation-react'
 
-export default function useAuth(auth: firebase.auth.Auth) {
+export default function useAuth(auth: Auth) {
   const { loading, error, value, setError, setValue } = useAsync(
     async () => auth.currentUser,
     [],

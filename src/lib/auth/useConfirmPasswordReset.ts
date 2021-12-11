@@ -1,23 +1,25 @@
-import firebase from 'firebase/app'
 import { useCallback, useState } from 'react'
 
-export default function useConfirmPasswordReset(auth: firebase.auth.Auth) {
-  const [error, setError] = useState<firebase.FirebaseError>()
+import { FirebaseError } from 'firebase/app'
+import { Auth, confirmPasswordReset } from 'firebase/auth'
+
+export default function useConfirmPasswordReset(auth: Auth) {
+  const [error, setError] = useState<FirebaseError>()
   const [loading, setLoading] = useState(false)
 
-  const confirmPasswordReset = useCallback(
+  const _confirmPasswordReset = useCallback(
     async (code: string, newPassword: string) => {
       setLoading(true)
       try {
-        await auth.confirmPasswordReset(code, newPassword)
+        await confirmPasswordReset(auth, code, newPassword)
         setLoading(false)
       } catch (error) {
-        setError(error as firebase.FirebaseError)
+        setError(error as FirebaseError)
         setLoading(false)
       }
     },
     [auth],
   )
 
-  return [confirmPasswordReset, loading, error] as const
+  return [_confirmPasswordReset, loading, error] as const
 }
